@@ -11,7 +11,7 @@
 			:indicator-dots="false"
 			>
 			<swiper-item v-for="(item,index) in swiperList.homeImageDesc" :key="index">
-				<image class="swiper-item" :src="item.url" mode=""></image>
+				<image class="swiper-item" :src="item.url" mode="" @click="swiperItemClick()"></image>
 			</swiper-item>
 		</swiper>
 			<!-- 风格对应文案 -->
@@ -58,7 +58,7 @@
 				current: 0,
 				swiperCurrent: 0,
 				swiperList: {
-						type:'欧式',
+						type:'北欧',
 						desc: [
 							'北欧风格',
 							'色彩缤纷、快乐宁静',
@@ -89,7 +89,7 @@
 					},
 				styleData: [
 					{
-						type:'欧式',
+						type:'北欧',
 						isActive: true,
 						desc: [
 							'北欧风格',
@@ -181,6 +181,12 @@
 		},
 		changeSwiper(e) {
 			this.swiperCurrent = e.detail.current;
+		},
+		swiperItemClick() {
+			console.log(this.swiperList);
+			uni.navigateTo({
+				url: `../designerList/designerList?type=${this.swiperList.type}`
+			}); 
 		}
 		}
 	}

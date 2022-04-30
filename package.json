@@ -1,0 +1,19 @@
+{
+    "id": "fui-card",
+    "name": "Card 卡片（fui-card）",
+    "version": "v1.0.0",
+    "description": "Card 卡片，常用的布局组件。",
+    "keywords": [
+        "Card",
+        "卡片",
+        "fui-card",
+        "FirstUI",
+        "Nvue"
+    ],
+    "dcloudext": {
+        "category": [
+            "前端组件",
+            "通用组件"
+        ]
+    }
+}
