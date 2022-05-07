@@ -17,6 +17,15 @@
 			}
 		}
 	    
+        ,{
+            "path" : "pages/packageDetail/packageDetail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		// "navigationStyle":"custom",

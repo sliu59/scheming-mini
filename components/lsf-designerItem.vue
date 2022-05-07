@@ -1,7 +1,7 @@
 <template>
 	<view class="design-container">
 		<view class="view-list">
-			<view class="view-item" v-for="(item,index) in designerList" :key="index">
+			<view class="view-item" v-for="(item,index) in designerList" :key="index" @click="toDetail(item)">
 				
 				<lsf-card 
 					:src="item.avatar" 
@@ -33,7 +33,16 @@
 		},
 		mounted() {
 			console.log(this.designerList);
-		}
+		},
+		methods: {
+			toDetail(data) {
+				console.log(data);
+				var data = JSON.stringify(data); // 这里转换成 字符串
+					uni.navigateTo({
+						url:'../packageDetail/packageDetail?data='+data
+				})
+			}
+		},
 	}
 </script>
 
