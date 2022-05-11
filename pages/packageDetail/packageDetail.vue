@@ -13,7 +13,7 @@
 					:imageRadius="'100%'"
 					>
 					<view class="fui-card__content ">
-						<image class="case-img" :src="packageDetail.image" mode="scaleToFill"></image>
+						<image class="case-img" :src="packageDetail.package.packImg" mode="widthFix"></image>
 						<uni-table border stripe emptyText="暂无更多数据" >
 							<!-- 表头行 -->
 							<uni-tr>
@@ -31,7 +31,7 @@
 						
 						</uni-table>
 						<text class="total-section">总价: {{packageDetail.package.total}}</text>
-						<button class="uni-button"  type="Primary">进入下单界面</button>
+						<button class="uni-button"   @tap="appLoginWx" type="Primary">进入下单界面</button>
 						<button class="uni-button"  type="info">联络设计师，专人服务</button>
 						
 					</view>
@@ -54,6 +54,27 @@
 			var packageDetail = JSON.parse(options.data); // 字符串转对象
 					console.log(packageDetail)
 					this.packageDetail = packageDetail
+		},
+		methods: {
+			// js 部分
+			appLoginWx(){
+				uni.getUserProfile({  
+				        lang: 'zh_CN',
+				        desc:'获取用户信息',
+				        success: userInfo=> {
+				            console.log(userInfo,'userInfo');
+				            uni.login({
+				                provider: 'weixin',
+				                success: loginInfo=> {
+				                    console.log(loginInfo,'loginInfo');     
+				                }
+				            });
+				         },
+				        fail:err=>{
+				            console.log(err,'err')
+				        }
+				    });
+			}
 		}
 		
 	}

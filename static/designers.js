@@ -5,9 +5,10 @@ let designerList = [
 			"name": "设计师:Ashley",
 			"desc":"“ 让家更舒适! ”",
 			"avatar": "https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png",
-			"image": "https://pic.underrate.net/app20220424/1.jpg",
+			"image": "https://pic.underrate.net/app20220424/style/japandi/Ashley/designer-desc.png",
 			"package": {
 				total: 3500,
+				packImg: 'https://pic.underrate.net/app20220424/style/japandi/Ashley/package.jpg',
 				list: [
 						{
 							name: '餐桌',
@@ -39,9 +40,10 @@ let designerList = [
 			"name": "设计师:crystal",
 			"desc":"“ 不放过任何一个细节！ ”",
 			"avatar": "https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png",
-			"image": "https://pic.underrate.net/app20220424/2.jpg",
+			"image": "https://pic.underrate.net/app20220424/style/japandi/crystal/designer-desc.png",
 			"package": {
 				total: 6000,
+				packImg: 'https://pic.underrate.net/app20220424/style/japandi/crystal/package.jpg',
 				list: [
 						{
 							name: '沙发',
@@ -77,9 +79,10 @@ let designerList = [
 			"name": "设计师:Laurel",
 			"desc":"“ 创造美好的生活！ ”",
 			"avatar": "https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png",
-			"image": "https://pic.underrate.net/app20220424/3.jpg",
+			"image": "https://pic.underrate.net/app20220424/style/japandi/Laurel/designer-desc.png",
 			"package": {
 				total: 20000,
+				packImg: 'https://pic.underrate.net/app20220424/style/japandi/Laurel/package.jpg',
 				list: [
 						{
 							name: '沙发',
@@ -128,9 +131,10 @@ let designerList = [
 			"name": "设计师:marie",
 			"desc":"“ 创造美好的生活！ ”",
 			"avatar": "https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png",
-			"image": "https://pic.underrate.net/app20220424/3.jpg",
+			"image": "https://pic.underrate.net/app20220424/style/japandi/Marie/designer-desc.png",
 			"package": {
 				total: 20000,
+				packImg: 'https://pic.underrate.net/app20220424/style/japandi/Marie/package.jpg',
 				list: [
 						{
 							name: '餐桌',
