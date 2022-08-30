@@ -1,40 +1,141 @@
 <template>
 	<view>
-		<uni-card :is-shadow="false" is-full>
-					<text class="uni-h6">uni-forms 组件一般由输入框、选择器、单选框、多选框等控件组成，用以收集、校验、提交数据。</text>
-				</uni-card>
+
 				<uni-section title="基本用法" type="line">
 					<view class="example">
 						<!-- 基础用法，不包含校验规则 -->
 						<uni-forms ref="baseForm" :modelValue="baseFormData">
-							<uni-forms-item label="姓名" required>
-								<uni-easyinput v-model="baseFormData.name" placeholder="请输入姓名" />
+							<uni-forms-item label="城市" required @click="citySelect">
+								<uni-easyinput @click="citySelect" v-model="baseFormData.name" placeholder="请选择城市" />
 							</uni-forms-item>
-							<uni-forms-item label="年龄" required>
-								<uni-easyinput v-model="baseFormData.age" placeholder="请输入年龄" />
+							<uni-forms-item label="户型面积" required>
+								<uni-easyinput v-model="baseFormData.name" placeholder="请输入房屋面积 单位:平方" />
 							</uni-forms-item>
-							<uni-forms-item label="性别" required>
-								<uni-data-checkbox v-model="baseFormData.sex" :localdata="sexs" />
+							<uni-forms-item label="厅数" required>
+								<uni-number-box @change="changeValue" />
 							</uni-forms-item>
-							<uni-forms-item label="兴趣爱好" required>
-								<uni-data-checkbox v-model="baseFormData.hobby" multiple :localdata="hobbys" />
+							<uni-forms-item label="房间数" required>
+								<uni-number-box @change="changeValue" />
 							</uni-forms-item>
-							<uni-forms-item label="自我介绍">
-								<uni-easyinput type="textarea" v-model="baseFormData.introduction" placeholder="请输入自我介绍" />
+							<uni-forms-item label="厨房数" required>
+								<uni-number-box @change="changeValue" />
 							</uni-forms-item>
-							<uni-forms-item label="日期时间">
-								<uni-datetime-picker type="datetime" return-type="timestamp" v-model="baseFormData.datetimesingle"/>
+							<uni-forms-item label="卫生间数" required>
+								<uni-number-box @change="changeValue" />
 							</uni-forms-item>
+							<uni-forms-item label="阳台数" required>
+								<uni-number-box @change="changeValue" />
+							</uni-forms-item>
+							<uni-forms-item label="硬装设施" required>
+								 <hpy-form-select :dataList="hobbyList" text="text" name="value" v-model="formData.hobbySelect" @change="change" />
+							</uni-forms-item>
+							<uni-forms-item label="补充" required>
+								 <hpy-form-select :dataList="hobbys" text="text" name="value" v-model="formData.hobbySelect" @change="change" />
+							</uni-forms-item>
+							<uni-forms-item label="电话" required>
+								<uni-easyinput v-model="baseFormData.name" placeholder="请输入电话号码" />
+							</uni-forms-item>
+							<uni-forms-item label="备注">
+								<uni-easyinput type="textarea" v-model="baseFormData.introduction" placeholder="备注" />
+							</uni-forms-item>
+							
 						</uni-forms>
 					</view>
-				</uni-section>
+					
+				</uni-section> 
+				<uni-card title="产品包描述">
+					<text>该产品包适合40~60m²的空间使用，空间较小，活泼的颜色能够让空间显得更加轻盈。</text>
+				</uni-card>
+				<uni-card title="产品包服务">
+					<text>后续客户提供平面图或上门量房复尺，进一步确定该产品包是否符合空间使用，专属设计师跟进服务，直至家具摆放满意。</text>
+				</uni-card>
+				<uni-card title="产品包品质">
+					<text>确保每个家具到达您家之前都是经过品质检验的，基础硬装完整，保证下单10天内拎包入住。</text>
+				</uni-card>
+				<view class="btn-box">
+					<button class="uni-button submit-btn"  type="Primary" @click="submit">确认下单</button>
+				</view>
+	<city-select 
+	@cityClick="cityClick"
+	:formatName="formatName"
+	:activeCity="activeCity"
+	:obtainCitys="obtainCitys"
+	>
+	</city-select>
 	</view>
+	
 </template>
 
 <script>
 	export default {
 		data() {
 			return {
+				formatName: 'title',
+				activeCity:{id:1,title:'广州'},
+				//显示的城市数据
+				obtainCitys: [
+					{
+						id: 0,
+						title: '南京'
+					},
+					{
+						id: 1,
+						title: '北京'
+					},
+					{
+						id: 2,
+						title: '天津'
+					},
+					{
+						id: 3,
+						title: '西安'
+					},
+					{
+						id: 4,
+						title: '广州'
+					},
+					{
+						id: 5,
+						title: '佛山'
+					},
+					{
+						id: 6,
+						title: '东莞'
+					},
+					{
+						id: 7,
+						title: '肇庆'
+					},
+					{
+						id: 8,
+						title: '深圳'
+					},
+					{
+						id: 9,
+						title: '梅州'
+					},
+					{
+						id: 10,
+						title: '湛江'
+					},
+					{
+						id: 10,
+						title: '云浮'
+					}
+				],
+				formData:{
+						hobbySelect:''
+					},
+					hobbyList: [{
+						text: '足球',
+						value: 1
+					}, {
+						text: '篮球',
+						value: 2
+					}, {
+						text: '游泳',
+						value: 3
+					}],
 				// 基础表单数据
 				baseFormData: {
 					name: '',
@@ -58,24 +159,12 @@
 				}],
 				// 多选数据源
 				hobbys: [{
-					text: '跑步',
+					text: '需要设计师优化',
 					value: 0
 				}, {
-					text: '游泳',
+					text: '不需要，已有设计师团队',
 					value: 1
-				}, {
-					text: '绘画',
-					value: 2
-				}, {
-					text: '足球',
-					value: 3
-				}, {
-					text: '篮球',
-					value: 4
-				}, {
-					text: '其他',
-					value: 5
-				}],
+				},],
 				// 分段器数据
 				current: 0,
 	
@@ -151,6 +240,17 @@
 			this.$refs.baseForm.setRules(this.customRules)
 		},
 		methods: {
+			radioChange: function(evt) {
+			            for (let i = 0; i < this.hobbys.length; i++) {
+			                if (this.hobbys[i].value === evt.detail.value) {
+			                    this.current = i;
+			                    break;
+			                }
+			            }
+			        },
+				changeValue(value) {
+							console.log('返回数值：', value);
+						},
 			onClickItem(e) {
 				console.log(e);
 				this.current = e.currentIndex
@@ -176,6 +276,20 @@
 					console.log('err', err);
 				})
 			},
+			citySelect() {
+				console.log(123);
+			},
+			cityClick(item) {
+				console.log(2);
+				uni.showToast({
+					icon: 'none',
+					title: 'item: ' + JSON.stringify(item),
+					// #ifdef MP-WEIXIN
+					duration: 3000,
+					// #endif
+					mask: true
+				})
+			}
 		}
 	}
 </script>
@@ -206,5 +320,13 @@
 		align-items: center;
 		height: 35px;
 		margin-left: 10px;
+	}
+	.btn-box {
+		padding-bottom: 40px;
+		
+	}
+	.submit-btn {
+		margin: 0 40px;
+		
 	}
 </style>

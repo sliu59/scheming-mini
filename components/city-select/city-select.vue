@@ -78,6 +78,7 @@ export default {
 	},
 	data() {
 		return {
+			
 			toView: 'city-letter-Find', //锚链接 初始值
 			scrollTop: 0, //scroll-view 滑动的距离
 			cityindexs: [], // 城市索引
@@ -125,6 +126,7 @@ export default {
 	created() {
 		// 初始化城市数据
 		this.cityData = this.obtainCitys;
+		console.log(this.cityData);
 		this.initializationCity();
 		this.buildCityindexs();
 	},
@@ -171,6 +173,7 @@ export default {
 		 * @param str String
 		 */
 		getLetter(str) {
+			console.log(str);
 			return citySelect.getFirstLetter(str[0]);
 		},
 		/**
@@ -179,12 +182,13 @@ export default {
 		 */
 		buildCityindexs() {
 			this.cityindexs = [];
+			
 			for (let i = 0; i < this.cityData.length; i++) {
 				// 获取首字母
 				const cityLetter = this.getLetter(this.cityData[i][this.formatName]).firstletter;
 				// 获取当前城市首字母的unicode，用作后续排序
 				const unicode = this.getLetter(this.cityData[i][this.formatName]).unicode;
-
+				console.log(cityLetter,unicode);
 				const index = this.cityIndexPosition(cityLetter);
 				if (this.cityindexs.indexOf(cityLetter) === -1) {
 					this.handleCity[index].isCity = true;
